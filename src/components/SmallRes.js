@@ -56,8 +56,8 @@ export default function SmallRes() {
           </div>
         </div>
         <div className="item__bottom__bottom">
-          <span>Delivery: €3.90</span>
           <span>hamburger, fries</span>
+          <span>Delivery: €3.90</span>
         </div>
       </div>
     </div>

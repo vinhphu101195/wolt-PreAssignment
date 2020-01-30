@@ -24,13 +24,21 @@
   color: #61dafb;
 }
 
-.container__item:hover  .item__img__detail{
-  transform: scale(1.1git init)
+.item__img {
+  overflow: hidden;
+}
+.container__item:hover {
+  cursor: pointer;
+}
+.container__item:hover .item__img__detail {
+  transform: scale(1.04);
+  border-radius: 8px 8px 0 0;
 }
 
 .item__img__detail {
   width: 100%;
   border-radius: 8px 8px 0 0;
+  transition: all 0.8s;
 }
 
 .container__item {
@@ -38,12 +46,12 @@
   border-radius: 8px;
   width: 21rem;
 }
-.item__bottom__upper{
+.item__bottom__upper {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.item__bottom__bottom{
+.item__bottom__bottom {
   border-top: 1px dashed #e4e4e4;
   font-size: 12px;
   color: #868789;
