@@ -45,6 +45,10 @@
   border: 1px dashed #e4e4e4;
   border-radius: 8px;
   width: 21rem;
+  font-family: Lobster, cursive;
+  background-color: #fff;
+
+  margin: 10px;
 }
 .item__bottom__upper {
   display: flex;
