@@ -24,6 +24,7 @@ const Status = styled.span`
   background-color: ${props => (props.status ? "rgb(66, 183, 42)" : "#bbb")};
   border-radius: 50%;
   display: inline-block;
+  margin-right: 8px;
 `;
 
 function unicodeToChar(text) {
@@ -32,15 +33,12 @@ function unicodeToChar(text) {
   });
 }
 
-export default function SmallRes() {
-  var string = "Ilmi\u00f6m\u00e4isi\u00e4 sushiburritoja";
-  console.log(unicodeToChar(string));
-
+export default function SmallRes(props) {
   return (
     <div className="container__item">
       <div className="item__img">
         <img
-          src="https://prod-wolt-venue-images-cdn.wolt.com/5b348b31fe8992000bbec771/2be8c7738b220df2f9a0974da5c90d90"
+          src={props.data.image}
           className="item__img__detail"
           alt="restaurant"
         ></img>
@@ -48,18 +46,25 @@ export default function SmallRes() {
       <div className="item__bottom">
         <div className="item__bottom__upper">
           <div className="item__bottom__title">
-            <Name>Social Burgerjoint Citycenter</Name>
-            <Description>{unicodeToChar(string)}</Description>
+            <Name>{unicodeToChar(props.data.name)}</Name>
+            <Description>{unicodeToChar(props.data.description)}</Description>
           </div>
           <div className="item__bottom__status">
-            <Status status={false}></Status>
+            <Status status={props.data.online}></Status>
           </div>
         </div>
         <div className="item__bottom__bottom">
-          <span>hamburger, fries</span>
+          <span>{showTag(props.data.tags)}</span>
           <span>Delivery: €3.90</span>
         </div>
       </div>
     </div>
   );
 }
+
+
+const showTag = tags => {
+    return tags.map((ele, index) => {
+      return <span key={index}>{ele} </span>;
+    });
+  };
