@@ -21,7 +21,8 @@ export default function Home() {
   const [restaurantState, setRestaurantState] = useState(restaurants);
 
   const onSort = value => {
-    const a = restaurants.sort((a, b) => {
+    const a = [...restaurantState];
+    a.sort((a, b) => {
       if (a.name > b.name) {
         return value;
       } else if (a.name < b.name) {
@@ -30,10 +31,9 @@ export default function Home() {
         return 0;
       }
     });
-    setRestaurantState(a);
+    return setRestaurantState(a);
   };
-  console.log(restaurantState);
-  
+
   return (
     <div>
       <div className="dropdown">
