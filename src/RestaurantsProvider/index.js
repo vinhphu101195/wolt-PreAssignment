@@ -1,5 +1,5 @@
 import React, { createContext,useContext } from "react";
-import file from "../data/restaurants.json";
+import file from "./restaurants.json";
 
 export const DataContext = createContext();
 
