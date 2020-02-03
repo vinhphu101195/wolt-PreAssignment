@@ -10,20 +10,23 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Restaurants = ({restaurants}) => {
+const Restaurants = ({ restaurants }) => {
   return restaurants.map((ele, index) => {
     return <SmallRes data={ele} key={index}></SmallRes>;
   });
-  
 };
 
 export default function Home() {
   const restaurants = useRestaurant();
+  restaurants.sort(function(a, b) {
+    return b.online - a.online;
+  });
+
   const [restaurantState, setRestaurantState] = useState(restaurants);
 
   const onSort = value => {
-    const a = [...restaurantState];
-    a.sort((a, b) => {
+    const copyRestaurant = [...restaurantState];
+    copyRestaurant.sort((a, b) => {
       if (a.name > b.name) {
         return value;
       } else if (a.name < b.name) {
@@ -32,7 +35,7 @@ export default function Home() {
         return 0;
       }
     });
-    return setRestaurantState(a);
+    return setRestaurantState(copyRestaurant);
   };
 
   return (
