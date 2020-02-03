@@ -5,4 +5,3 @@
 ## git clone https://github.com/vinhphu101195/wolt-PreAssignment.git, then run npm i
 ## run npm start
 
-## demo 
