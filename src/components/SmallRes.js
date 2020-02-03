@@ -41,6 +41,14 @@ const Loading = () => (
 );
 
 export default function SmallRes(props) {
+  function formatNumber(num, curr) {
+    if (curr === "EUR") {
+      return `€ ${num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1.")}`;
+    } else {
+      return num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1,");
+    }
+  }
+
   return (
     <div className="container__item">
       <div className="item__img">
@@ -69,7 +77,10 @@ export default function SmallRes(props) {
         </div>
         <div className="item__bottom__bottom">
           <span>{showTag(props.data.tags)}</span>
-          <span>Delivery: €3.90</span>
+          <span>
+            Delivery:{" "}
+            {formatNumber(props.data.delivery_price, props.data.currency)}
+          </span>
         </div>
       </div>
     </div>
