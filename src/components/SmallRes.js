@@ -40,15 +40,21 @@ const Loading = () => (
   </div>
 );
 
-export default function SmallRes(props) {
-  function formatNumber(num, curr) {
-    if (curr === "EUR") {
-      return `€ ${num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1.")}`;
-    } else {
-      return num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1,");
-    }
+function formatNumber(num, curr) {
+  if (curr === "EUR") {
+    return `€ ${num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1.")}`;
+  } else {
+    return num.toString().replace(/(\d)(?=(\d{2})+(?!\d))/g, "$1,");
   }
+}
 
+const showTag = tags => {
+  return tags.map((ele, index) => {
+    return <span key={index}>{ele} </span>;
+  });
+};
+
+export default function SmallRes(props) {
   return (
     <div className="container__item">
       <div className="item__img">
@@ -86,9 +92,3 @@ export default function SmallRes(props) {
     </div>
   );
 }
-
-const showTag = tags => {
-  return tags.map((ele, index) => {
-    return <span key={index}>{ele} </span>;
-  });
-};
