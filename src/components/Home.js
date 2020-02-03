@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import SmallRes from "./SmallRes";
-import { DataContext } from "../context/ContextComponent";
+import SmallRes from "./RestaurantItem";
+import { useRestaurant } from "../RestaurantsProvider/index";
 
 const Container = styled.div`
   padding: 4em;
@@ -10,14 +10,15 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const showRestaurant = restaurants => {
+const Restaurants = ({restaurants}) => {
   return restaurants.map((ele, index) => {
     return <SmallRes data={ele} key={index}></SmallRes>;
   });
+  
 };
 
 export default function Home() {
-  const restaurants = useContext(DataContext);
+  const restaurants = useRestaurant();
   const [restaurantState, setRestaurantState] = useState(restaurants);
 
   const onSort = value => {
@@ -59,7 +60,7 @@ export default function Home() {
           </ul>
         </div>
       </div>
-      <Container>{showRestaurant(restaurantState)}</Container>;
+      <Container>{<Restaurants restaurants={restaurantState} />}</Container>;
     </div>
   );
 }
