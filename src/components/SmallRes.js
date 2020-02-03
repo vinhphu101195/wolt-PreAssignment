@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import LazyLoad from "react-lazyload";
 
 const Name = styled.h3`
   color: #3c3d40;
@@ -33,15 +34,28 @@ function unicodeToChar(text) {
   });
 }
 
+const Loading = () => (
+  <div className="post loading">
+    <h5>Loading...</h5>
+  </div>
+);
+
 export default function SmallRes(props) {
   return (
     <div className="container__item">
       <div className="item__img">
-        <img
-          src={props.data.image}
-          className="item__img__detail"
-          alt="restaurant"
-        ></img>
+        <LazyLoad
+          once={true}
+          height={100}
+          offset={[-100, 100]}
+          placeholder={<Loading />}
+        >
+          <img
+            src={props.data.image}
+            className="item__img__detail"
+            alt="restaurant"
+          ></img>
+        </LazyLoad>
       </div>
       <div className="item__bottom">
         <div className="item__bottom__upper">
@@ -62,9 +76,8 @@ export default function SmallRes(props) {
   );
 }
 
-
 const showTag = tags => {
-    return tags.map((ele, index) => {
-      return <span key={index}>{ele} </span>;
-    });
-  };
+  return tags.map((ele, index) => {
+    return <span key={index}>{ele} </span>;
+  });
+};
