@@ -1,10 +1,9 @@
-import React, { createContext,useContext } from "react";
+import React, { createContext, useContext } from "react";
 import file from "./restaurants.json";
 
 export const DataContext = createContext();
 
 export default function RestaurantsProvider(props) {
-    
   return (
     <DataContext.Provider value={file.restaurants}>
       {props.children}
@@ -12,6 +11,6 @@ export default function RestaurantsProvider(props) {
   );
 }
 
-export const useRestaurant = () =>{
-  return useContext(DataContext)
-}
+export const useRestaurant = () => {
+  return useContext(DataContext);
+};
